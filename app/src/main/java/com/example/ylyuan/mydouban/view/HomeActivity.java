@@ -7,8 +7,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.ylyuan.mydouban.R;
+import com.example.ylyuan.mydouban.presenter.HomePagePresenter;
 
 public class HomeActivity extends AppCompatActivity {
+    private HomePagePresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +18,8 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        presenter = new HomePagePresenter();
+        presenter.loadingData();
     }
 
     @Override

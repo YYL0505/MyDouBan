@@ -39,7 +39,7 @@ public class DouBanApp extends Application{
     }
 
     public DouBanRestApi getRestApi() {
-        return DouBanRestManager.getInstance(this).getDoubanRestApi();
+        return DouBanRestManager.getInstance(this).getDouBanRestApi();
     }
 
 

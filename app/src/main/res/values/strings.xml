@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">My DouBan</string>
     <string name="action_settings">Settings</string>
-    <string name="server_base_url">www.baidu.com</string>
+    <string name="server_base_url">https://api.dribbble.com</string>
 </resources>
