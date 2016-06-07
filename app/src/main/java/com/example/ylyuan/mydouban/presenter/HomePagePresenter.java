@@ -11,6 +11,13 @@ import retrofit2.Response;
 
 public class HomePagePresenter {
     private List<Shots> shotses;
+    private ShotsListView view ;
+
+    public void attachView(ShotsListView v)  {
+        if (v instanceof ShotsListView) {
+            view = (ShotsListView) v;
+        }
+    }
 
     public void loadingData() {
 
@@ -18,12 +25,18 @@ public class HomePagePresenter {
             @Override
             public void onResponse(Call<List<Shots>> call, Response<List<Shots>> response) {
                 shotses = response.body();
+                view.refreshShots(shotses);
             }
 
             @Override
             public void onFailure(Call<List<Shots>> call, Throwable t) {
-
+                t.printStackTrace();
             }
         });
+    }
+
+    public interface ShotsListView {
+        void refreshShots(List<Shots> shotses);
+
     }
 }

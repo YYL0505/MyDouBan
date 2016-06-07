@@ -2,23 +2,43 @@ package com.example.ylyuan.mydouban.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.ylyuan.mydouban.R;
+import com.example.ylyuan.mydouban.adapter.HomePageAdapter;
+import com.example.ylyuan.mydouban.model.Shots;
 import com.example.ylyuan.mydouban.presenter.HomePagePresenter;
+import com.facebook.drawee.backends.pipeline.Fresco;
 
-public class HomeActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class HomeActivity extends AppCompatActivity implements HomePagePresenter.ShotsListView {
     private HomePagePresenter presenter;
+
+    private RecyclerView shotsViews;
+
+    private HomePageAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fresco.initialize(this);
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        shotsViews = (RecyclerView) findViewById(R.id.shots);
+        shotsViews.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+
         setSupportActionBar(toolbar);
         presenter = new HomePagePresenter();
+        presenter.attachView(HomeActivity.this);
+        adapter = new HomePageAdapter(this, new ArrayList<Shots>());
+        shotsViews.setAdapter(adapter);
+
         presenter.loadingData();
     }
 
@@ -42,5 +62,10 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void refreshShots(List<Shots> shotses) {
+        adapter.refreshList(shotses);
     }
 }

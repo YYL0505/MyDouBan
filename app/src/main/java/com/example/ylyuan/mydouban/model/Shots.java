@@ -2,9 +2,6 @@ package com.example.ylyuan.mydouban.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
-
 import lombok.Data;
 
 
@@ -12,7 +9,9 @@ import lombok.Data;
 public class Shots {
     private String title;
     private String description;
-    private List<String> images;
+
+    @SerializedName("images")
+    private ImageUrl imageUrl;
 
     @SerializedName("views_count")
     private Long viewsCount;
