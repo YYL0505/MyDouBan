@@ -3,7 +3,9 @@ package com.example.ylyuan.mydouban.presenter;
 import com.example.ylyuan.mydouban.DouBanApp;
 import com.example.ylyuan.mydouban.model.Shots;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,8 +22,11 @@ public class HomePagePresenter {
     }
 
     public void loadingData() {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("page", "0");
+        params.put("per_page", "20");
 
-        DouBanApp.getInstance().getRestApi().getShots().enqueue(new Callback<List<Shots>>() {
+        DouBanApp.getInstance().getRestApi().getShots(params).enqueue(new Callback<List<Shots>>() {
             @Override
             public void onResponse(Call<List<Shots>> call, Response<List<Shots>> response) {
                 shotses = response.body();
