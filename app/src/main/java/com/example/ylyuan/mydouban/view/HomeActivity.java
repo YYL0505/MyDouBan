@@ -21,8 +21,11 @@ public class HomeActivity extends AppCompatActivity implements HomePagePresenter
     private HomePagePresenter presenter;
 
     private RecyclerView shotsViews;
-
+    private StaggeredGridLayoutManager layoutManager;
     private HomePageAdapter adapter;
+
+    private boolean loadingData;
+    private int pages = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +34,8 @@ public class HomeActivity extends AppCompatActivity implements HomePagePresenter
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         shotsViews = (RecyclerView) findViewById(R.id.shots);
-        shotsViews.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        shotsViews.setLayoutManager(layoutManager);
 
         setSupportActionBar(toolbar);
         presenter = new HomePagePresenter();
@@ -39,24 +43,47 @@ public class HomeActivity extends AppCompatActivity implements HomePagePresenter
         adapter = new HomePageAdapter(this, new ArrayList<Shots>());
         shotsViews.setAdapter(adapter);
 
-        presenter.loadingData();
+        loadingData = true;
+        presenter.loadingData(pages);
+        shotsViews.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                int[] pastVisiblesItems = new int[2];
+                int visibleItemCount;
+                int totalItemCount;
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0) {
+                    visibleItemCount = layoutManager.getChildCount();
+                    totalItemCount = layoutManager.getItemCount();
+                    pastVisiblesItems = layoutManager.findFirstVisibleItemPositions(pastVisiblesItems);
+
+                    if ((visibleItemCount + pastVisiblesItems[0]) >= totalItemCount) {
+                        if (!loadingData) {
+                            loadingData = true;
+                            presenter.loadingData(pages);
+                        }
+
+                    }
+                }
+            }
+        });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_home, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -66,6 +93,8 @@ public class HomeActivity extends AppCompatActivity implements HomePagePresenter
 
     @Override
     public void refreshShots(List<Shots> shotses) {
+        loadingData = false;
+        pages += 1;
         adapter.refreshList(shotses);
     }
 }

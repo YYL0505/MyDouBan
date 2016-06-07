@@ -39,7 +39,6 @@ public class HomePageAdapter extends RecyclerView.Adapter<ShotsViewHolder> {
 
 
     public void refreshList(List<Shots> data) {
-        shotses.clear();
         shotses.addAll(data);
 
         notifyDataSetChanged();

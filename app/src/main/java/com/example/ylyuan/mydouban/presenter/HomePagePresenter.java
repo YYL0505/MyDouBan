@@ -21,9 +21,9 @@ public class HomePagePresenter {
         }
     }
 
-    public void loadingData() {
+    public void loadingData(int pages) {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("page", "0");
+        params.put("page", String.valueOf(pages));
         params.put("per_page", "20");
 
         DouBanApp.getInstance().getRestApi().getShots(params).enqueue(new Callback<List<Shots>>() {

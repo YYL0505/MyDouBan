@@ -25,7 +25,7 @@ public class ShotsViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void populate(Shots shots) {
-        Uri uri = Uri.parse(shots.getImageUrl().getNormalType());
+        Uri uri = Uri.parse(shots.getImageUrl().getTeaserType());
         shotImage.setImageURI(uri);
         shotCommentCount.setText(shots.getCommentsCount().toString());
         shotViewCount.setText(shots.getViewsCount().toString());
