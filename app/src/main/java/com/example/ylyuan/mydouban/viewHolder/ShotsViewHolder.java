@@ -16,6 +16,8 @@ public class ShotsViewHolder extends RecyclerView.ViewHolder {
     private TextView shotViewCount;
     private TextView shotCommentCount;
     private TextView shotLikeCount;
+    private ImageView shotUserAvatar;
+    private TextView shotUserName;
 
 
     public ShotsViewHolder(View inflate) {
@@ -24,16 +26,23 @@ public class ShotsViewHolder extends RecyclerView.ViewHolder {
         shotViewCount = (TextView) inflate.findViewById(R.id.shot_view_count);
         shotCommentCount = (TextView) inflate.findViewById(R.id.shot_comment_count);
         shotLikeCount = (TextView) inflate.findViewById(R.id.shot_like_count);
+        shotUserAvatar = (ImageView) inflate.findViewById(R.id.shot_user_avatar);
+        shotUserName = (TextView) inflate.findViewById(R.id.shot_user_name);
     }
 
     public void populate(Context context, Shots shots) {
-        Uri uri = Uri.parse(shots.getImageUrl().getTeaserType());
-        shotImage.setImageURI(uri);
+        shotImage.setImageURI(Uri.parse(shots.getImageUrl().getTeaserType()));
         Picasso.with(context)
-                .load(uri)
+                .load(Uri.parse(shots.getImageUrl().getTeaserType()))
                 .into(shotImage);
+
         shotCommentCount.setText(shots.getCommentsCount().toString());
         shotViewCount.setText(shots.getViewsCount().toString());
         shotLikeCount.setText(shots.getViewsCount().toString());
+
+        Picasso.with(context)
+                .load(Uri.parse(shots.getUser().getAvatarUrl()))
+                .into(shotUserAvatar);
+        shotUserName.setText(shots.getUser().getName());
     }
 }

@@ -21,4 +21,6 @@ public class Shots {
 
     @SerializedName("comments_count")
     private Long commentsCount;
+
+    private User user;
 }
