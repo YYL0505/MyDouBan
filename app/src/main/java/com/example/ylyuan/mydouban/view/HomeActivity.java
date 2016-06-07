@@ -12,7 +12,6 @@ import com.example.ylyuan.mydouban.R;
 import com.example.ylyuan.mydouban.adapter.HomePageAdapter;
 import com.example.ylyuan.mydouban.model.Shots;
 import com.example.ylyuan.mydouban.presenter.HomePagePresenter;
-import com.facebook.drawee.backends.pipeline.Fresco;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +29,6 @@ public class HomeActivity extends AppCompatActivity implements HomePagePresenter
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Fresco.initialize(this);
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         shotsViews = (RecyclerView) findViewById(R.id.shots);

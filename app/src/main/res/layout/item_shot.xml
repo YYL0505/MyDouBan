@@ -16,13 +16,12 @@
         android:layout_margin="@dimen/small_margin"
         android:orientation="vertical">
 
-        <com.facebook.drawee.view.SimpleDraweeView
+        <ImageView
             android:id="@+id/shot_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"
-            fresco:placeholderImage="@drawable/my_default_shot_pic" />
+            android:layout_height="100dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"/>
 
         <RelativeLayout
             android:layout_width="match_parent"

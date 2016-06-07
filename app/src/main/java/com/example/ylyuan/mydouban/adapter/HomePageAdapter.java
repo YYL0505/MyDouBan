@@ -16,7 +16,10 @@ public class HomePageAdapter extends RecyclerView.Adapter<ShotsViewHolder> {
 
     private LayoutInflater inflater;
 
+    private Context context;
+
     public HomePageAdapter(Context context, List<Shots> shotses) {
+        this.context = context;
         this.inflater = LayoutInflater.from(context);
         this.shotses = shotses;
     }
@@ -28,7 +31,7 @@ public class HomePageAdapter extends RecyclerView.Adapter<ShotsViewHolder> {
 
     @Override
     public void onBindViewHolder(ShotsViewHolder holder, int position) {
-        holder.populate(shotses.get(position));
+        holder.populate(context, shotses.get(position));
 
     }
 
