@@ -90,7 +90,11 @@ public class ShotDetailCommentViewHolder  extends RecyclerView.ViewHolder  {
         shotViewCount.setText(shots.getViewsCount().toString());
         shotLikeCount.setText(shots.getViewsCount().toString());
 
-        shotDescription.setText(Html.fromHtml(shots.getDescription()));
+        if (null != shots.getDescription()) {
+            shotDescription.setText(Html.fromHtml(shots.getDescription()));
+        } else {
+            shotDescription.setText("");
+        }
 
     }
 
