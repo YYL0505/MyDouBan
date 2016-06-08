@@ -1,6 +1,7 @@
 package com.example.ylyuan.mydouban.view;
 
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -16,10 +17,11 @@ import com.example.ylyuan.mydouban.presenter.HomePagePresenter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity implements HomePagePresenter.ShotsListView {
+public class HomeActivity extends AppCompatActivity implements HomePagePresenter.ShotsListView, SwipeRefreshLayout.OnRefreshListener{
     private HomePagePresenter presenter;
 
     private RecyclerView shotsViews;
+    private SwipeRefreshLayout swipeRefreshLayout;
     private StaggeredGridLayoutManager layoutManager;
     private HomePageAdapter adapter;
 
@@ -34,6 +36,9 @@ public class HomeActivity extends AppCompatActivity implements HomePagePresenter
         shotsViews = (RecyclerView) findViewById(R.id.shots);
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         shotsViews.setLayoutManager(layoutManager);
+
+        swipeRefreshLayout=(SwipeRefreshLayout) findViewById(R.id.refresh);
+        swipeRefreshLayout.setOnRefreshListener(this);
 
         setSupportActionBar(toolbar);
         presenter = new HomePagePresenter();
@@ -90,9 +95,18 @@ public class HomeActivity extends AppCompatActivity implements HomePagePresenter
     }
 
     @Override
-    public void refreshShots(List<Shots> shotses) {
+    public void refreshShots(List<Shots> shotses, boolean cleanShots) {
         loadingData = false;
+        swipeRefreshLayout.setRefreshing(false);
         pages += 1;
-        adapter.refreshList(shotses);
+        adapter.refreshList(shotses, cleanShots);
+    }
+
+    @Override
+    public void onRefresh() {
+        swipeRefreshLayout.setRefreshing(true);
+        loadingData = true;
+        pages = 0;
+        presenter.loadingData(pages);
     }
 }

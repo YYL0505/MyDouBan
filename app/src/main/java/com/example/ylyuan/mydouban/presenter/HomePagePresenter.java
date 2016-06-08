@@ -21,7 +21,7 @@ public class HomePagePresenter {
         }
     }
 
-    public void loadingData(int pages) {
+    public void loadingData(final int pages) {
         Map<String, String> params = new HashMap<String, String>();
         params.put("page", String.valueOf(pages));
         params.put("per_page", "20");
@@ -30,7 +30,7 @@ public class HomePagePresenter {
             @Override
             public void onResponse(Call<List<Shots>> call, Response<List<Shots>> response) {
                 shotses = response.body();
-                view.refreshShots(shotses);
+                view.refreshShots(shotses, pages == 0);
             }
 
             @Override
@@ -41,7 +41,7 @@ public class HomePagePresenter {
     }
 
     public interface ShotsListView {
-        void refreshShots(List<Shots> shotses);
+        void refreshShots(List<Shots> shotses, boolean cleanShots);
 
     }
 }
