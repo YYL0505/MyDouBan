@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.ylyuan.mydouban.R;
 import com.example.ylyuan.mydouban.model.Shots;
+import com.example.ylyuan.mydouban.view.ShotDetailActivity;
 import com.squareup.picasso.Picasso;
 
 public class ShotsViewHolder extends RecyclerView.ViewHolder {
@@ -30,11 +31,18 @@ public class ShotsViewHolder extends RecyclerView.ViewHolder {
         shotUserName = (TextView) inflate.findViewById(R.id.shot_user_name);
     }
 
-    public void populate(Context context, Shots shots) {
+    public void populate(final Context context, final Shots shots) {
         shotImage.setImageURI(Uri.parse(shots.getImageUrl().getTeaserType()));
         Picasso.with(context)
                 .load(Uri.parse(shots.getImageUrl().getTeaserType()))
                 .into(shotImage);
+
+        shotImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(ShotDetailActivity.getIntentToMe(context, shots));
+            }
+        });
 
         shotCommentCount.setText(shots.getCommentsCount().toString());
         shotViewCount.setText(shots.getViewsCount().toString());

@@ -2,11 +2,13 @@ package com.example.ylyuan.mydouban.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 import lombok.Data;
 
 
 @Data
-public class Shots {
+public class Shots implements Serializable{
     private String title;
     private String description;
 
@@ -23,4 +25,6 @@ public class Shots {
     private Long commentsCount;
 
     private User user;
+
+    private int id;
 }
