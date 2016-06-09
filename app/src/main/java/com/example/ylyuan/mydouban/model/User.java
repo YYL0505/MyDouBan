@@ -3,6 +3,7 @@ package com.example.ylyuan.mydouban.model;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.List;
 
 import lombok.Data;
 
@@ -29,4 +30,6 @@ public class User implements Serializable {
 
     @SerializedName("shots_count")
     private int shotsCount;
+
+    private List<Shots> shotses;
 }

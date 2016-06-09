@@ -14,9 +14,12 @@ import android.widget.TextView;
 import com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader;
 import com.example.ylyuan.mydouban.R;
 import com.example.ylyuan.mydouban.adapter.UserAdapter;
+import com.example.ylyuan.mydouban.model.Shots;
 import com.example.ylyuan.mydouban.model.User;
 import com.example.ylyuan.mydouban.presenter.UserPresenter;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class UserActivity extends BaseActivity implements UserPresenter.UserListView{
     public static final String USER_NAME = "userName";
@@ -48,7 +51,7 @@ public class UserActivity extends BaseActivity implements UserPresenter.UserList
         RecyclerViewHeader header = (RecyclerViewHeader) findViewById(R.id.user_header);
         header.attachTo(recyclerView);
 
-        userAdapter = new UserAdapter();
+        userAdapter = new UserAdapter(this, new ArrayList<Shots>());
         recyclerView.setAdapter(userAdapter);
 
         userShotsCount = (TextView) findViewById(R.id.user_shot_count);
@@ -78,4 +81,10 @@ public class UserActivity extends BaseActivity implements UserPresenter.UserList
         userLocation.setText(user.getLocation());
         userDescription.setText(Html.fromHtml(user.getBio()));
     }
+
+    @Override
+    public void notifyData(User user) {
+        userAdapter.notifyData(user);
+    }
+
 }

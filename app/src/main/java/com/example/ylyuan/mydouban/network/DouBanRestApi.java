@@ -27,6 +27,14 @@ public interface DouBanRestApi {
             "Content-Type: application/json",
             "Authorization: Bearer 06dde48a787703eabbb9b42f68ed8b24ab5be606eb03a837637cf47145ebded2"
     })
+    @GET("/v1/users/{userId}/shots")
+    Call<List<Shots>> getShotsByUser(@Path("userId") int userId);
+
+
+    @Headers({
+            "Content-Type: application/json",
+            "Authorization: Bearer 06dde48a787703eabbb9b42f68ed8b24ab5be606eb03a837637cf47145ebded2"
+    })
     @GET("/v1/shots/{shotId}/comments")
     Call<List<Comment>> getComments(@Path("shotId") int shotid);
 
@@ -37,4 +45,6 @@ public interface DouBanRestApi {
     })
     @GET("/v1/users/{userId}")
     Call<User> getUsers(@Path("userId") int userId);
+
+
 }
