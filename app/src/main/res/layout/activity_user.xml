@@ -22,11 +22,22 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/user_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="user profile"
+        android:layout_gravity="center_horizontal|top"
         android:layout_margin="@dimen/fab_margin"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader
+        android:id="@+id/user_header"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal|top">
+
+        <include layout="@layout/item_user_header" />
+
+    </com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader>
 
 </android.support.design.widget.CoordinatorLayout>
