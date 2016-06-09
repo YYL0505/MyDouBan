@@ -12,7 +12,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomePagePresenter {
-    private List<Shot> shotses;
+    private List<Shot> shots;
     private ShotsListView view ;
 
     public void attachView(ShotsListView v)  {
@@ -29,8 +29,8 @@ public class HomePagePresenter {
         DouBanApp.getInstance().getRestApi().getShots(params).enqueue(new Callback<List<Shot>>() {
             @Override
             public void onResponse(Call<List<Shot>> call, Response<List<Shot>> response) {
-                shotses = response.body();
-                view.refreshShots(shotses, pages == 0);
+                shots = response.body();
+                view.refreshShots(shots, pages == 0);
             }
 
             @Override
@@ -41,7 +41,7 @@ public class HomePagePresenter {
     }
 
     public interface ShotsListView {
-        void refreshShots(List<Shot> shotses, boolean cleanShots);
+        void refreshShots(List<Shot> shots, boolean cleanShots);
 
     }
 }

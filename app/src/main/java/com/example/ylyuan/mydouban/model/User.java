@@ -31,5 +31,5 @@ public class User implements Serializable {
     @SerializedName("shots_count")
     private int shotsCount;
 
-    private List<Shot> shotses;
+    private List<Shot> shots;
 }

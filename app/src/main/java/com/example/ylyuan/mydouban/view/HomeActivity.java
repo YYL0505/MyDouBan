@@ -75,11 +75,11 @@ public class HomeActivity extends BaseActivity implements HomePagePresenter.Shot
     }
 
     @Override
-    public void refreshShots(List<Shot> shotses, boolean cleanShots) {
+    public void refreshShots(List<Shot> shots, boolean cleanShots) {
         loadingData = false;
         swipeRefreshLayout.setRefreshing(false);
         pages += 1;
-        adapter.refreshList(shotses, cleanShots);
+        adapter.refreshList(shots, cleanShots);
     }
 
     @Override

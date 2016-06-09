@@ -12,16 +12,16 @@ import com.example.ylyuan.mydouban.viewHolder.ShotsViewHolder;
 import java.util.List;
 
 public class HomePageAdapter extends RecyclerView.Adapter<ShotsViewHolder> {
-    private List<Shot> shotses;
+    private List<Shot> shots;
 
     private LayoutInflater inflater;
 
     private Context context;
 
-    public HomePageAdapter(Context context, List<Shot> shotses) {
+    public HomePageAdapter(Context context, List<Shot> shots) {
         this.context = context;
         this.inflater = LayoutInflater.from(context);
-        this.shotses = shotses;
+        this.shots = shots;
     }
 
     @Override
@@ -31,21 +31,21 @@ public class HomePageAdapter extends RecyclerView.Adapter<ShotsViewHolder> {
 
     @Override
     public void onBindViewHolder(ShotsViewHolder holder, int position) {
-        holder.populate(context, shotses.get(position));
+        holder.populate(context, shots.get(position));
 
     }
 
     @Override
     public int getItemCount() {
-        return shotses == null? 0 : shotses.size();
+        return shots == null? 0 : shots.size();
     }
 
 
     public void refreshList(List<Shot> data, boolean cleanShots) {
         if (cleanShots) {
-            shotses.clear();
+            shots.clear();
         }
-        shotses.addAll(data);
+        shots.addAll(data);
 
         notifyDataSetChanged();
     }

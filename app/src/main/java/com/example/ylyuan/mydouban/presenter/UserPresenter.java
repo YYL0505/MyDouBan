@@ -40,14 +40,14 @@ public class UserPresenter {
         DouBanApp.getInstance().getRestApi().getShotsByUser(userId).enqueue(new Callback<List<Shot>>() {
             @Override
             public void onResponse(Call<List<Shot>> call, Response<List<Shot>> response) {
-                if (user.getShotses() != null) {
-                    user.getShotses().clear();
-                    user.getShotses().addAll(response.body());
+                if (user.getShots() != null) {
+                    user.getShots().clear();
+                    user.getShots().addAll(response.body());
                 } else {
-                    user.setShotses(response.body());
+                    user.setShots(response.body());
                 }
 
-                for (Shot shot:user.getShotses()) {
+                for (Shot shot:user.getShots()) {
                     shot.setUser(user);
                 }
 

@@ -16,12 +16,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserShotViewHolder>  {
 
     private final LayoutInflater inflater;
     private Context context;
-    private List<Shot> shotses;
+    private List<Shot> shots;
 
-    public UserAdapter(Context context, List<Shot> shotses) {
+    public UserAdapter(Context context, List<Shot> shots) {
         this.context = context;
         this.inflater = LayoutInflater.from(context);
-        this.shotses = shotses;
+        this.shots = shots;
     }
 
     @Override
@@ -31,17 +31,17 @@ public class UserAdapter extends RecyclerView.Adapter<UserShotViewHolder>  {
 
     @Override
     public void onBindViewHolder(UserShotViewHolder holder, int position) {
-        holder.populate(context, shotses.get(position));
+        holder.populate(context, shots.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return shotses == null? 0 : shotses.size();
+        return shots == null? 0 : shots.size();
     }
 
     public void notifyData(User user) {
-        shotses.clear();
-        shotses.addAll(user.getShotses());
+        shots.clear();
+        shots.addAll(user.getShots());
 
         notifyDataSetChanged();
     }
