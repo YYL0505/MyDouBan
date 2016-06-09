@@ -5,15 +5,15 @@
     <string name="server_base_url">https://api.dribbble.com</string>
 
     <plurals name="minute_unit">
-        <item quantity="one">last %s minute ago</item>
-        <item quantity="other">last %s minutes ago</item>
+        <item quantity="one">about %s minute ago</item>
+        <item quantity="other">about %s minutes ago</item>
     </plurals>
     <plurals name="hour_unit">
-        <item quantity="one">last %s hour ago</item>
-        <item quantity="other">last %s hours ago</item>
+        <item quantity="one">about %s hour ago</item>
+        <item quantity="other">about %s hours ago</item>
     </plurals>
     <plurals name="day_unit">
-        <item quantity="one">last %s day ago</item>
-        <item quantity="other">last %s days ago</item>
+        <item quantity="one">about %s day ago</item>
+        <item quantity="other">about %s days ago</item>
     </plurals>
 </resources>
