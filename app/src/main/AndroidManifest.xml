@@ -29,6 +29,12 @@
             android:label="@string/shot_detail"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+
+        <activity
+            android:name=".view.UserActivity"
+            android:label="@string/user"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

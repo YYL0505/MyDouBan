@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.ylyuan.mydouban.R;
 import com.example.ylyuan.mydouban.model.Shots;
 import com.example.ylyuan.mydouban.view.ShotDetailActivity;
+import com.example.ylyuan.mydouban.view.UserActivity;
 import com.squareup.picasso.Picasso;
 
 public class ShotsViewHolder extends RecyclerView.ViewHolder {
@@ -51,6 +52,13 @@ public class ShotsViewHolder extends RecyclerView.ViewHolder {
         Picasso.with(context)
                 .load(Uri.parse(shots.getUser().getAvatarUrl()))
                 .into(shotUserAvatar);
+
+        shotUserAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(UserActivity.getIntentToMe(context, shots.getUser().getId()));
+            }
+        });
         shotUserName.setText(shots.getUser().getName());
     }
 }

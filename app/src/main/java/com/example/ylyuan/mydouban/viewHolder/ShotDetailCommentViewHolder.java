@@ -12,6 +12,7 @@ import com.example.ylyuan.mydouban.R;
 import com.example.ylyuan.mydouban.model.Comment;
 import com.example.ylyuan.mydouban.model.Shots;
 import com.example.ylyuan.mydouban.util.DateUtil;
+import com.example.ylyuan.mydouban.view.UserActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.Date;
@@ -61,10 +62,17 @@ public class ShotDetailCommentViewHolder  extends RecyclerView.ViewHolder  {
 
     }
 
-    public void populate(Context context, Comment comment) {
+    public void populate(final Context context, final Comment comment) {
         Picasso.with(context)
                 .load(Uri.parse(comment.getUser().getAvatarUrl()))
                 .into(shotCommentUserAvatar);
+        shotCommentUserAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(UserActivity.getIntentToMe(context, comment.getUser().getId()));
+            }
+        });
+
         shotCommentUserName.setText(comment.getUser().getName());
 
         shotCommentDetail.setText(Html.fromHtml(comment.getDetail()));
@@ -75,10 +83,17 @@ public class ShotDetailCommentViewHolder  extends RecyclerView.ViewHolder  {
         shotCommentSupportCount.setVisibility(comment.getSupport() > 0 ? View.VISIBLE : View.GONE);
 
     }
-    public void populate(Context context, Shots shots) {
+    public void populate(final Context context, final Shots shots) {
         Picasso.with(context)
                 .load(Uri.parse(shots.getUser().getAvatarUrl()))
                 .into(shotUserAvatar);
+        shotUserAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(UserActivity.getIntentToMe(context, shots.getUser().getId()));
+            }
+        });
+
         shotTitle.setText(shots.getTitle());
         shotAuthor.setText(shots.getUser().getName());
 
