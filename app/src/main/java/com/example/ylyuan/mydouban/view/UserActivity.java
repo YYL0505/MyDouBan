@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -39,7 +38,6 @@ public class UserActivity extends BaseActivity implements UserPresenter.UserList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         presenter = new UserPresenter();
         presenter.attachView(UserActivity.this);
 

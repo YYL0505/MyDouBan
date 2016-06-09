@@ -26,14 +26,12 @@
 
         <activity
             android:name=".view.ShotDetailActivity"
-            android:label="@string/shot_detail"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="@string/shot_detail">
         </activity>
 
         <activity
             android:name=".view.UserActivity"
-            android:label="@string/user"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="@string/user">
         </activity>
     </application>
 
