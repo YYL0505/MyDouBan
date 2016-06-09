@@ -9,19 +9,19 @@ import android.support.v7.widget.RecyclerView;
 import com.example.ylyuan.mydouban.R;
 import com.example.ylyuan.mydouban.adapter.ShotDetailViewAdapter;
 import com.example.ylyuan.mydouban.model.Comment;
-import com.example.ylyuan.mydouban.model.Shots;
+import com.example.ylyuan.mydouban.model.Shot;
 import com.example.ylyuan.mydouban.presenter.ShotDetailPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShotDetailActivity extends BaseActivity implements ShotDetailPresenter.ShotsCommentListView {
-    public static final String SHOTS = "Shots";
+    public static final String SHOTS = "Shot";
 
     private ShotDetailPresenter presenter;
     private ShotDetailViewAdapter shotDetailViewAdapter;
 
-    private Shots shots;
+    private Shot shot;
     private RecyclerView shotDetail;
 
     @Override
@@ -32,20 +32,20 @@ public class ShotDetailActivity extends BaseActivity implements ShotDetailPresen
         presenter = new ShotDetailPresenter();
         presenter.attachView(ShotDetailActivity.this);
 
-        shots = (Shots) getIntent().getSerializableExtra(SHOTS);
+        shot = (Shot) getIntent().getSerializableExtra(SHOTS);
 
         shotDetail = (RecyclerView) findViewById(R.id.shot_detail);
         shotDetail.setLayoutManager(new LinearLayoutManager(this));
-        shotDetailViewAdapter = new ShotDetailViewAdapter(this, new ArrayList<Comment>(), shots);
+        shotDetailViewAdapter = new ShotDetailViewAdapter(this, new ArrayList<Comment>(), shot);
         shotDetail.setAdapter(shotDetailViewAdapter);
 
-        presenter.loadingComments(shots.getId());
+        presenter.loadingComments(shot.getId());
     }
 
 
-    public static Intent getIntentToMe(Context context, Shots shots) {
+    public static Intent getIntentToMe(Context context, Shot shot) {
         Intent intent = new Intent(context, ShotDetailActivity.class);
-        intent.putExtra(SHOTS, shots);
+        intent.putExtra(SHOTS, shot);
         return intent;
     }
 

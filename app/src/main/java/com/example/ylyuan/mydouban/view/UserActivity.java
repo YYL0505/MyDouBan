@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader;
 import com.example.ylyuan.mydouban.R;
 import com.example.ylyuan.mydouban.adapter.UserAdapter;
-import com.example.ylyuan.mydouban.model.Shots;
+import com.example.ylyuan.mydouban.model.Shot;
 import com.example.ylyuan.mydouban.model.User;
 import com.example.ylyuan.mydouban.presenter.UserPresenter;
 import com.squareup.picasso.Picasso;
@@ -49,7 +49,7 @@ public class UserActivity extends BaseActivity implements UserPresenter.UserList
         RecyclerViewHeader header = (RecyclerViewHeader) findViewById(R.id.user_header);
         header.attachTo(recyclerView);
 
-        userAdapter = new UserAdapter(this, new ArrayList<Shots>());
+        userAdapter = new UserAdapter(this, new ArrayList<Shot>());
         recyclerView.setAdapter(userAdapter);
 
         userShotsCount = (TextView) findViewById(R.id.user_shot_count);

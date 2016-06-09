@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.example.ylyuan.mydouban.R;
-import com.example.ylyuan.mydouban.model.Shots;
+import com.example.ylyuan.mydouban.model.Shot;
 import com.example.ylyuan.mydouban.model.User;
 import com.example.ylyuan.mydouban.viewHolder.UserShotViewHolder;
 
@@ -16,9 +16,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserShotViewHolder>  {
 
     private final LayoutInflater inflater;
     private Context context;
-    private List<Shots> shotses;
+    private List<Shot> shotses;
 
-    public UserAdapter(Context context, List<Shots> shotses) {
+    public UserAdapter(Context context, List<Shot> shotses) {
         this.context = context;
         this.inflater = LayoutInflater.from(context);
         this.shotses = shotses;

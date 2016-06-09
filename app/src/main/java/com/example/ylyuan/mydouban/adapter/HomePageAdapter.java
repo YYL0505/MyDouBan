@@ -6,19 +6,19 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.example.ylyuan.mydouban.R;
-import com.example.ylyuan.mydouban.model.Shots;
+import com.example.ylyuan.mydouban.model.Shot;
 import com.example.ylyuan.mydouban.viewHolder.ShotsViewHolder;
 
 import java.util.List;
 
 public class HomePageAdapter extends RecyclerView.Adapter<ShotsViewHolder> {
-    private List<Shots> shotses;
+    private List<Shot> shotses;
 
     private LayoutInflater inflater;
 
     private Context context;
 
-    public HomePageAdapter(Context context, List<Shots> shotses) {
+    public HomePageAdapter(Context context, List<Shot> shotses) {
         this.context = context;
         this.inflater = LayoutInflater.from(context);
         this.shotses = shotses;
@@ -41,7 +41,7 @@ public class HomePageAdapter extends RecyclerView.Adapter<ShotsViewHolder> {
     }
 
 
-    public void refreshList(List<Shots> data, boolean cleanShots) {
+    public void refreshList(List<Shot> data, boolean cleanShots) {
         if (cleanShots) {
             shotses.clear();
         }

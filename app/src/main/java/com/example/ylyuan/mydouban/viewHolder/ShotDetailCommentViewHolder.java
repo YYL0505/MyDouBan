@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.example.ylyuan.mydouban.R;
 import com.example.ylyuan.mydouban.model.Comment;
-import com.example.ylyuan.mydouban.model.Shots;
+import com.example.ylyuan.mydouban.model.Shot;
 import com.example.ylyuan.mydouban.util.DateUtil;
 import com.example.ylyuan.mydouban.view.UserActivity;
 import com.squareup.picasso.Picasso;
@@ -83,30 +83,30 @@ public class ShotDetailCommentViewHolder  extends RecyclerView.ViewHolder  {
         shotCommentSupportCount.setVisibility(comment.getSupport() > 0 ? View.VISIBLE : View.GONE);
 
     }
-    public void populate(final Context context, final Shots shots) {
+    public void populate(final Context context, final Shot shot) {
         Picasso.with(context)
-                .load(Uri.parse(shots.getUser().getAvatarUrl()))
+                .load(Uri.parse(shot.getUser().getAvatarUrl()))
                 .into(shotUserAvatar);
         shotUserAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(UserActivity.getIntentToMe(context, shots.getUser().getId()));
+                context.startActivity(UserActivity.getIntentToMe(context, shot.getUser().getId()));
             }
         });
 
-        shotTitle.setText(shots.getTitle());
-        shotAuthor.setText(shots.getUser().getName());
+        shotTitle.setText(shot.getTitle());
+        shotAuthor.setText(shot.getUser().getName());
 
         Picasso.with(context)
-                .load(Uri.parse(shots.getImageUrl().getTeaserType()))
+                .load(Uri.parse(shot.getImageUrl().getTeaserType()))
                 .into(shotImage);
 
-        shotCommentCount.setText(shots.getCommentsCount().toString());
-        shotViewCount.setText(shots.getViewsCount().toString());
-        shotLikeCount.setText(shots.getViewsCount().toString());
+        shotCommentCount.setText(shot.getCommentsCount().toString());
+        shotViewCount.setText(shot.getViewsCount().toString());
+        shotLikeCount.setText(shot.getViewsCount().toString());
 
-        if (null != shots.getDescription()) {
-            shotDescription.setText(Html.fromHtml(shots.getDescription()));
+        if (null != shot.getDescription()) {
+            shotDescription.setText(Html.fromHtml(shot.getDescription()));
         } else {
             shotDescription.setText("");
         }

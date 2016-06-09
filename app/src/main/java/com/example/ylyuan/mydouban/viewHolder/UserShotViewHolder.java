@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ylyuan.mydouban.R;
-import com.example.ylyuan.mydouban.model.Shots;
+import com.example.ylyuan.mydouban.model.Shot;
 import com.example.ylyuan.mydouban.view.ShotDetailActivity;
 import com.squareup.picasso.Picasso;
 
@@ -27,21 +27,21 @@ public class UserShotViewHolder extends RecyclerView.ViewHolder  {
         shotLikeCount = (TextView) inflate.findViewById(R.id.shot_like_count);
     }
 
-    public void populate(final Context context, final Shots shots) {
-        shotImage.setImageURI(Uri.parse(shots.getImageUrl().getTeaserType()));
+    public void populate(final Context context, final Shot shot) {
+        shotImage.setImageURI(Uri.parse(shot.getImageUrl().getTeaserType()));
         Picasso.with(context)
-                .load(Uri.parse(shots.getImageUrl().getTeaserType()))
+                .load(Uri.parse(shot.getImageUrl().getTeaserType()))
                 .into(shotImage);
 
         shotImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(ShotDetailActivity.getIntentToMe(context, shots));
+                context.startActivity(ShotDetailActivity.getIntentToMe(context, shot));
             }
         });
 
-        shotCommentCount.setText(shots.getCommentsCount().toString());
-        shotViewCount.setText(shots.getViewsCount().toString());
-        shotLikeCount.setText(shots.getViewsCount().toString());
+        shotCommentCount.setText(shot.getCommentsCount().toString());
+        shotViewCount.setText(shot.getViewsCount().toString());
+        shotLikeCount.setText(shot.getViewsCount().toString());
     }
 }

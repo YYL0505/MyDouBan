@@ -8,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.example.ylyuan.mydouban.R;
 import com.example.ylyuan.mydouban.adapter.HomePageAdapter;
-import com.example.ylyuan.mydouban.model.Shots;
+import com.example.ylyuan.mydouban.model.Shot;
 import com.example.ylyuan.mydouban.presenter.HomePagePresenter;
 
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public class HomeActivity extends BaseActivity implements HomePagePresenter.Shot
         setSupportActionBar(toolbar);
         presenter = new HomePagePresenter();
         presenter.attachView(HomeActivity.this);
-        adapter = new HomePageAdapter(this, new ArrayList<Shots>());
+        adapter = new HomePageAdapter(this, new ArrayList<Shot>());
         shotsViews.setAdapter(adapter);
 
         loadingData = true;
@@ -75,7 +75,7 @@ public class HomeActivity extends BaseActivity implements HomePagePresenter.Shot
     }
 
     @Override
-    public void refreshShots(List<Shots> shotses, boolean cleanShots) {
+    public void refreshShots(List<Shot> shotses, boolean cleanShots) {
         loadingData = false;
         swipeRefreshLayout.setRefreshing(false);
         pages += 1;

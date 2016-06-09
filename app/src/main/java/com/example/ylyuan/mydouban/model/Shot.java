@@ -8,7 +8,7 @@ import lombok.Data;
 
 
 @Data
-public class Shots implements Serializable{
+public class Shot implements Serializable{
     private String title;
     private String description;
 

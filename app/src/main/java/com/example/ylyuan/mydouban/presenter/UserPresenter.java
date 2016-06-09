@@ -1,7 +1,7 @@
 package com.example.ylyuan.mydouban.presenter;
 
 import com.example.ylyuan.mydouban.DouBanApp;
-import com.example.ylyuan.mydouban.model.Shots;
+import com.example.ylyuan.mydouban.model.Shot;
 import com.example.ylyuan.mydouban.model.User;
 
 import java.util.List;
@@ -37,9 +37,9 @@ public class UserPresenter {
     }
 
     private void loadingShotsById(int userId) {
-        DouBanApp.getInstance().getRestApi().getShotsByUser(userId).enqueue(new Callback<List<Shots>>() {
+        DouBanApp.getInstance().getRestApi().getShotsByUser(userId).enqueue(new Callback<List<Shot>>() {
             @Override
-            public void onResponse(Call<List<Shots>> call, Response<List<Shots>> response) {
+            public void onResponse(Call<List<Shot>> call, Response<List<Shot>> response) {
                 if (user.getShotses() != null) {
                     user.getShotses().clear();
                     user.getShotses().addAll(response.body());
@@ -47,7 +47,7 @@ public class UserPresenter {
                     user.setShotses(response.body());
                 }
 
-                for (Shots shot:user.getShotses()) {
+                for (Shot shot:user.getShotses()) {
                     shot.setUser(user);
                 }
 
@@ -55,7 +55,7 @@ public class UserPresenter {
             }
 
             @Override
-            public void onFailure(Call<List<Shots>> call, Throwable t) {
+            public void onFailure(Call<List<Shot>> call, Throwable t) {
                 t.printStackTrace();
             }
         });

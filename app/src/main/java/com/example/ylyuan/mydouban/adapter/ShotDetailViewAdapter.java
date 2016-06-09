@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import com.example.ylyuan.mydouban.R;
 import com.example.ylyuan.mydouban.model.Comment;
-import com.example.ylyuan.mydouban.model.Shots;
+import com.example.ylyuan.mydouban.model.Shot;
 import com.example.ylyuan.mydouban.viewHolder.ShotDetailCommentViewHolder;
 
 import java.util.ArrayList;
@@ -19,13 +19,13 @@ public class ShotDetailViewAdapter extends RecyclerView.Adapter<ShotDetailCommen
     private Context context;
     private LayoutInflater inflater;
     private List<Comment> comments;
-    private Shots shots;
+    private Shot shot;
 
-    public ShotDetailViewAdapter(Context context, ArrayList<Comment> comments, Shots shots) {
+    public ShotDetailViewAdapter(Context context, ArrayList<Comment> comments, Shot shot) {
         this.context = context;
         this.inflater = LayoutInflater.from(context);
         this.comments = comments;
-        this.shots = shots;
+        this.shot = shot;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class ShotDetailViewAdapter extends RecyclerView.Adapter<ShotDetailCommen
     @Override
     public void onBindViewHolder(ShotDetailCommentViewHolder holder, int position) {
         if (position == 0) {
-            holder.populate(context, shots);
+            holder.populate(context, shot);
         } else {
             holder.populate(context, comments.get(position - 1));
         }

@@ -1,7 +1,7 @@
 package com.example.ylyuan.mydouban.presenter;
 
 import com.example.ylyuan.mydouban.DouBanApp;
-import com.example.ylyuan.mydouban.model.Shots;
+import com.example.ylyuan.mydouban.model.Shot;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +12,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomePagePresenter {
-    private List<Shots> shotses;
+    private List<Shot> shotses;
     private ShotsListView view ;
 
     public void attachView(ShotsListView v)  {
@@ -26,22 +26,22 @@ public class HomePagePresenter {
         params.put("page", String.valueOf(pages));
         params.put("per_page", "20");
 
-        DouBanApp.getInstance().getRestApi().getShots(params).enqueue(new Callback<List<Shots>>() {
+        DouBanApp.getInstance().getRestApi().getShots(params).enqueue(new Callback<List<Shot>>() {
             @Override
-            public void onResponse(Call<List<Shots>> call, Response<List<Shots>> response) {
+            public void onResponse(Call<List<Shot>> call, Response<List<Shot>> response) {
                 shotses = response.body();
                 view.refreshShots(shotses, pages == 0);
             }
 
             @Override
-            public void onFailure(Call<List<Shots>> call, Throwable t) {
+            public void onFailure(Call<List<Shot>> call, Throwable t) {
                 t.printStackTrace();
             }
         });
     }
 
     public interface ShotsListView {
-        void refreshShots(List<Shots> shotses, boolean cleanShots);
+        void refreshShots(List<Shot> shotses, boolean cleanShots);
 
     }
 }
