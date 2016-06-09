@@ -2,20 +2,35 @@ package com.example.ylyuan.mydouban.view;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader;
 import com.example.ylyuan.mydouban.R;
+import com.example.ylyuan.mydouban.adapter.UserAdapter;
 import com.example.ylyuan.mydouban.model.User;
 import com.example.ylyuan.mydouban.presenter.UserPresenter;
+import com.squareup.picasso.Picasso;
 
 public class UserActivity extends BaseActivity implements UserPresenter.UserListView{
     public static final String USER_NAME = "userName";
     private int userId;
     private UserPresenter presenter;
+
+    private TextView userShotsCount;
+    private TextView userFollowersCount;
+    private ImageView userAvatar;
+    private TextView userName;
+    private TextView userLocation;
+    private TextView userDescription;
+    private UserAdapter userAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +48,16 @@ public class UserActivity extends BaseActivity implements UserPresenter.UserList
         RecyclerViewHeader header = (RecyclerViewHeader) findViewById(R.id.user_header);
         header.attachTo(recyclerView);
 
+        userAdapter = new UserAdapter();
+        recyclerView.setAdapter(userAdapter);
+
+        userShotsCount = (TextView) findViewById(R.id.user_shot_count);
+        userFollowersCount = (TextView) findViewById(R.id.user_follower_count);
+        userAvatar = (ImageView) findViewById(R.id.user_avatar);
+        userName = (TextView) findViewById(R.id.user_name);
+        userLocation = (TextView) findViewById(R.id.user_location);
+        userDescription = (TextView) findViewById(R.id.user_description);
+
         presenter.loadingUser(userId);
     }
 
@@ -44,6 +69,13 @@ public class UserActivity extends BaseActivity implements UserPresenter.UserList
 
     @Override
     public void updateUI(User user) {
-
+        userShotsCount.setText(getResources().getQuantityString(R.plurals.user_shot_count, user.getShotsCount(), user.getShotsCount()));
+        userFollowersCount.setText(getResources().getQuantityString(R.plurals.user_follower_count, user.getFollowersCount(), user.getFollowersCount()));
+        Picasso.with(this)
+                .load(Uri.parse(user.getAvatarUrl()))
+                .into(userAvatar);
+        userName.setText(user.getName());
+        userLocation.setText(user.getLocation());
+        userDescription.setText(Html.fromHtml(user.getBio()));
     }
 }

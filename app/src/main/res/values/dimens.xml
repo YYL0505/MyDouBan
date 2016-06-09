@@ -6,5 +6,8 @@
     <dimen name="small_margin">8dp</dimen>
     <dimen name="shot_footer_normal_height">12dp</dimen>
     <dimen name="shot_footer_text_size">8dp</dimen>
+    <dimen name="big_text_size">24dp</dimen>
+    <dimen name="middle_text_size">16dp</dimen>
     <dimen name="shot_description_text_size">12dp</dimen>
+    <dimen name="user_hear_action_bar_height">20dp</dimen>
 </resources>

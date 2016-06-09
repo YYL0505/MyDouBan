@@ -36,5 +36,5 @@ public interface DouBanRestApi {
             "Authorization: Bearer 06dde48a787703eabbb9b42f68ed8b24ab5be606eb03a837637cf47145ebded2"
     })
     @GET("/v1/users/{userId}")
-    Call<List<User>> getUsers(@Path("userId") int userId);
+    Call<User> getUsers(@Path("userId") int userId);
 }

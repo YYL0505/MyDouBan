@@ -11,35 +11,37 @@
     <TextView
         android:id="@+id/user_shot_count"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/user_hear_action_bar_height"
         android:layout_marginRight="@dimen/fab_margin"
         android:gravity="center_vertical"
-        tools:text="20 Shots"/>
+        tools:text="20 Shots"
+        android:textSize="@dimen/shot_footer_text_size" />
 
     <TextView
         android:id="@+id/user_follower_count"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/user_hear_action_bar_height"
         android:layout_toRightOf="@id/user_shot_count"
         android:layout_marginRight="@dimen/fab_margin"
         android:gravity="center_vertical"
-        tools:text="10 Followers"/>
+        tools:text="10 Followers"
+        android:textSize="@dimen/shot_footer_text_size" />
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/user_hear_action_bar_height"
         android:layout_toRightOf="@id/user_follower_count"
         android:layout_marginRight="@dimen/fab_margin"
-        android:padding="@dimen/small_margin"
         android:gravity="center_vertical"
-        android:text="More"/>
+        android:text="More"
+        android:textSize="@dimen/shot_footer_text_size" />
 
     <View
         android:id="@+id/user_top_bar_divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/user_shot_count"
-        android:background="@color/dark_gray"/>
+        android:background="@color/darker_gray"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -48,7 +50,8 @@
         android:layout_height="50dp"
         app:civ_border_width="1dp"
         app:civ_border_color="#FFFFFF"
-        android:layout_marginRight="2dp"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginBottom="@dimen/small_margin"
         android:layout_below="@id/user_top_bar_divider"
         android:layout_centerHorizontal="true"
         android:src="@mipmap/ic_launcher"/>
@@ -59,31 +62,49 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/user_avatar"
         android:layout_centerHorizontal="true"
-        tools:text="user name"/>
+        tools:text="user name"
+        android:textSize="@dimen/big_text_size"
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/user_decription"
+        android:id="@+id/user_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/user_name"
         android:layout_centerHorizontal="true"
+        tools:text="user location"
+        android:textSize="@dimen/middle_text_size"
+        android:textColor="@color/gray"/>
+
+    <TextView
+        android:id="@+id/user_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/user_location"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginBottom="@dimen/small_margin"
+        android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
-        tools:text="user blablabla blablabla blablabla blablabla blablabla blablabla"/>
+        tools:text="user blablabla blablabla blablabla blablabla blablabla blablabla"
+        android:textSize="@dimen/middle_text_size"
+        android:textColor="@color/darker_gray"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_below="@id/user_decription"
+        android:layout_height="24dp"
+        android:layout_below="@id/user_description"
         android:layout_centerHorizontal="true">
         <TextView
             android:id="@+id/user_to_be_followed"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginRight="@dimen/small_margin"
-            android:padding="@dimen/small_margin"
+            android:paddingLeft="@dimen/small_margin"
+            android:paddingRight="@dimen/small_margin"
             android:gravity="center_vertical"
-            android:background="@color/gray"
-            android:text="Follow" />
+            android:background="@drawable/gray_round_rectangle"
+            android:text="Follow"
+            android:textSize="@dimen/middle_text_size"/>
 
         <ImageView
             android:id="@+id/user_setting"
@@ -91,11 +112,9 @@
             android:layout_height="match_parent"
             android:layout_toRightOf="@id/user_to_be_followed"
             android:gravity="center_vertical"
-            android:background="@color/gray"
-            android:src="@mipmap/ic_launcher" />
+            android:background="@drawable/gray_round_rectangle"
+            android:src="@mipmap/ic_launcher"
+            android:textSize="@dimen/middle_text_size"/>
 
     </RelativeLayout>
-
-
-
 </RelativeLayout>

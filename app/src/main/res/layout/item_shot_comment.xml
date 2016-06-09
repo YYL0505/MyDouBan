@@ -46,7 +46,7 @@
         android:layout_alignLeft="@id/shot_comment_user"
         android:layout_below="@id/shot_comment_detail"
         tools:text="about 1 hour ago"
-        android:textColor="@color/dark_gray"/>
+        android:textColor="@color/darker_gray"/>
 
     <TextView
         android:id="@+id/shot_comment_like_msg"
@@ -56,7 +56,7 @@
         android:layout_below="@+id/shot_comment_detail"
         android:text="| Like?"
         android:textSize="@dimen/shot_description_text_size"
-        android:textColor="@color/dark_gray"/>
+        android:textColor="@color/darker_gray"/>
 
     <ImageView
         android:id="@+id/shot_comment_like_icon"
@@ -74,7 +74,7 @@
         android:layout_below="@+id/shot_comment_detail"
         android:textSize="@dimen/shot_description_text_size"
         tools:text="1"
-        android:textColor="@color/dark_gray"/>
+        android:textColor="@color/darker_gray"/>
 
     <View
         android:layout_width="match_parent"

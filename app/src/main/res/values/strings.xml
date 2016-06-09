@@ -17,4 +17,12 @@
         <item quantity="one">about %s day ago</item>
         <item quantity="other">about %s days ago</item>
     </plurals>
+    <plurals name="user_follower_count">
+        <item quantity="one"> %s Follower</item>
+        <item quantity="other"> %s Followers</item>
+    </plurals>
+    <plurals name="user_shot_count">
+        <item quantity="one"> %s Shot</item>
+        <item quantity="other"> %s Shots</item>
+    </plurals>
 </resources>
