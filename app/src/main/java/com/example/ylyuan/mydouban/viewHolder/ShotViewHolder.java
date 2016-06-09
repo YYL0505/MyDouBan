@@ -11,12 +11,12 @@ import com.example.ylyuan.mydouban.model.Shot;
 import com.example.ylyuan.mydouban.view.UserActivity;
 import com.squareup.picasso.Picasso;
 
-public class ShotsViewHolder extends UserShotViewHolder {
+public class ShotViewHolder extends UserShotViewHolder {
     private ImageView shotUserAvatar;
     private TextView shotUserName;
 
 
-    public ShotsViewHolder(View inflate) {
+    public ShotViewHolder(View inflate) {
         super(inflate);
         shotUserAvatar = (ImageView) inflate.findViewById(R.id.shot_user_avatar);
         shotUserName = (TextView) inflate.findViewById(R.id.shot_user_name);

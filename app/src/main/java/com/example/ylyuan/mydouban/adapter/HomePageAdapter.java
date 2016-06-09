@@ -7,11 +7,11 @@ import android.view.ViewGroup;
 
 import com.example.ylyuan.mydouban.R;
 import com.example.ylyuan.mydouban.model.Shot;
-import com.example.ylyuan.mydouban.viewHolder.ShotsViewHolder;
+import com.example.ylyuan.mydouban.viewHolder.ShotViewHolder;
 
 import java.util.List;
 
-public class HomePageAdapter extends RecyclerView.Adapter<ShotsViewHolder> {
+public class HomePageAdapter extends RecyclerView.Adapter<ShotViewHolder> {
     private List<Shot> shots;
 
     private LayoutInflater inflater;
@@ -25,12 +25,12 @@ public class HomePageAdapter extends RecyclerView.Adapter<ShotsViewHolder> {
     }
 
     @Override
-    public ShotsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ShotsViewHolder(inflater.inflate(R.layout.item_shot, parent, false));
+    public ShotViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new ShotViewHolder(inflater.inflate(R.layout.item_shot, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(ShotsViewHolder holder, int position) {
+    public void onBindViewHolder(ShotViewHolder holder, int position) {
         holder.populate(context, shots.get(position));
 
     }
