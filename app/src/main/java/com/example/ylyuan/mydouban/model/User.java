@@ -13,6 +13,20 @@ public class User implements Serializable {
     @SerializedName("avatar_url")
     private String avatarUrl;
 
-    @SerializedName("username")
     private String name;
+
+    private String useName;
+
+    private String bio;
+
+    private String location;
+
+    @SerializedName("followers_count")
+    private int followersCount;
+
+    @SerializedName("likes_count")
+    private int likesCount;
+
+    @SerializedName("shots_count")
+    private int shotsCount;
 }

@@ -2,6 +2,7 @@ package com.example.ylyuan.mydouban.network;
 
 import com.example.ylyuan.mydouban.model.Comment;
 import com.example.ylyuan.mydouban.model.Shots;
+import com.example.ylyuan.mydouban.model.User;
 
 import java.util.List;
 import java.util.Map;
@@ -28,4 +29,12 @@ public interface DouBanRestApi {
     })
     @GET("/v1/shots/{shotId}/comments")
     Call<List<Comment>> getComments(@Path("shotId") int shotid);
+
+
+    @Headers({
+            "Content-Type: application/json",
+            "Authorization: Bearer 06dde48a787703eabbb9b42f68ed8b24ab5be606eb03a837637cf47145ebded2"
+    })
+    @GET("/v1/users/{userId}")
+    Call<List<User>> getUsers(@Path("userId") int userId);
 }
